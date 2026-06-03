@@ -151,6 +151,20 @@
             border-radius: 4px;
         }
 
+        /* DEKORASI BINTANG BESAR KHUSUS SLIDE MAKE A WISH */
+        .bg-bintang {
+            position: absolute;
+            width: 45px; /* Ukuran besar sesuai permintaan */
+            height: auto;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: floatAnim 4s ease-in-out infinite;
+        }
+        #slide8.active .bg-bintang {
+            opacity: 0.75;
+        }
+
         @keyframes floatAnim {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
@@ -188,19 +202,41 @@
         .slide { display: none; width: 100%; position: relative; height: 100%; }
         .slide.active { display: block; }
 
+        /* AREA COUNTDOWN DI SLIDE 8 */
+        .countdown-display {
+            font-size: 22px;
+            color: #ffeb3b;
+            margin: 10px 0;
+            font-weight: bold;
+            min-height: 30px;
+            z-index: 5;
+            position: relative;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        /* FITUR KLIK PADA KUE */
+        .clickable-cake {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .clickable-cake:active {
+            transform: scale(0.92);
+        }
+
         /* Tema Warna Per Slide */
         #slide1 { background-color: #fffdf2; }
         #slide2, #slide3 { background-color: #ffe5ec; }
         #slide4 { background-color: #e3f2fd; }
         #slide5, #slide6 { background-color: #fffdf2; }
         #slide7 { background-color: #e8f5e9; }
-        #slide8 { background-color: #f3e5f5; }
+        #slide8 { background-color: #12121c; } /* Gelap syahdu di awal */
+        #slide9 { background-color: #f3e5f5; }
     </style>
 </head>
 <body>
 
     <audio id="bg-music" loop preload="auto">
-        <source src="musik.mp3.mpeg" type="audio/mpeg">
+        <source src="musik.mpeg" type="audio/mpeg">
     </audio>
 
     <div class="window">
@@ -249,7 +285,7 @@
                 <img src="balon-kanan.gif" alt="Balon Kanan" style="position: absolute; right: -15px; bottom: 100px; max-width: 60px; z-index: 1; animation: floatAnim 3.5s ease-in-out infinite;">
                 
                 <img src="cinnamoroll.gif" alt="Cinnamoroll" class="pixel-gbr" style="max-width: 115px; margin: 5px 0; position: relative; z-index: 2;">
-                <img src="kue.gif" alt="Kue" class="pixel-gbr blend-img" style="max-width: 90px; display: block; margin: 0 auto 10px auto; position: relative; z-index: 2;">
+                <img src="kue.gif" alt="Kue" class="pixel-gbr" style="max-width: 90px; display: block; margin: 0 auto 10px auto; position: relative; z-index: 2;">
                 
                 <p class="typewriter-text" id="text4" style="position: relative; z-index: 2; font-size: 8px;">happy 19th birthday, aliya ! 🎂🎈</p>
                 <button class="pixel-btn" onclick="nextSlide('slide5')">next...</button>
@@ -285,23 +321,39 @@
             </div>
 
             <div class="slide" id="slide8">
+                <img src="bintang.gif" class="bg-bintang" style="top: 15px; left: 20px;">
+                <img src="bintang.gif" class="bg-bintang" style="top: 80px; right: 25px; animation-delay: -1s;">
+                <img src="bintang.gif" class="bg-bintang" style="bottom: 120px; left: 15px; animation-delay: -2s;">
+                <img src="bintang.gif" class="bg-bintang" style="top: 180px; right: 15px; animation-delay: -3s;">
+
+                <img id="interactive-cake" src="kue-nyala.gif" alt="Birthday Cake" class="pixel-gbr" style="max-width: 135px; margin-bottom: 5px;">
+                
+                <div class="countdown-display" id="countdown-num"></div>
+
+                <p class="typewriter-text" id="text8" style="color: #fffdf0; text-shadow: 1px 1px 0 #000; font-size: 8px; padding: 0 10px; min-height: 55px;"></p>
+                
+                <button id="next-to-surat" class="pixel-btn" style="background-color: #fffdf0; box-shadow: 3px 3px 0 #000; display: none;" onclick="nextSlide('slide9')">Open Last Message 💌</button>
+            </div>
+
+            <div class="slide" id="slide9">
                 <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 15px; width: 100%;">
                     <div style="text-align: center;">
-                        <p id="text8_1" style="font-size: 6px; margin-bottom: 5px; opacity: 0.7; min-height: 10px;"></p>
+                        <p id="text9_1" style="font-size: 6px; margin-bottom: 5px; opacity: 0.7; min-height: 10px;"></p>
                         <img src="katak.gif" alt="Katak" class="pixel-gbr" style="max-width: 85px; margin: 0;">
                     </div>
                     <div style="text-align: center;">
-                        <p id="text8_2" style="font-size: 6px; margin-bottom: 5px; opacity: 0.7; min-height: 10px;"></p>
+                        <p id="text9_2" style="font-size: 6px; margin-bottom: 5px; opacity: 0.7; min-height: 10px;"></p>
                         <img src="kelinci.gif" alt="Kelinci" class="pixel-gbr" style="max-width: 85px; margin: 0;">
                     </div>
                 </div>
-                <p class="typewriter-text" id="text8_3" style="font-size: 7px; line-height: 1.7; text-align: left; padding: 0 5px; text-transform: none; margin-bottom: 0; min-height: 80px;"></p>
+                <p class="typewriter-text" id="text9_3" style="font-size: 7px; line-height: 1.7; text-align: left; padding: 0 5px; text-transform: none; margin-bottom: 0; min-height: 80px;"></p>
             </div>
 
         </div>
     </div>
 
     <script>
+        // DATA TEKS UTAMA (SUDAH TERUPDATE)
         const textData = {
             text1: "There is a secret message for you...",
             text2: "You have a GIFT !",
@@ -310,28 +362,26 @@
             text5: "huh? what's this ? looks like snoopy has a message !",
             text6: "hmm... it seems like you have a gift again opening gift...",
             text7: "For the second time, happy 19th birthday 🔥",
-            text8: "Happy birthday, Aliya! May all your dreams come true. I hope you always laugh freely without any burdens every day, and be surrounded by everything you love. I'm so happy to have you in my life. Enjoy your day to the fullest! 🤍"
+            text8: "Wait... Before you unlock the final secret message. Close your eyes, and make a wish... 🤍",
+            // Teks Surat Terbaru dengan pemisah paragraf otomatis (\n\n)
+            text9: "Happy birthday, Aliya! May all your dreams come true. I hope you laugh freely and carefree every day, and are surrounded by all the things you love.\n\nMake sure to prioritize your health and happiness. Good luck with your exams, everyone! After this, I'll be back to Sukodono, haha!\n\nI'm so happy to have met you all. Enjoy your special day to the fullest! 🤍"
         };
 
-        // FUNGSI KHUSUS PEMICU MUSIK SAAT KLIK UTAMA (MENGALAHKAN SISTEM SECURITY BROWSER)
+        let candleBlown = false;
+        let countdownActive = false;
+
         function mulaiDanMainkanMusik() {
             const music = document.getElementById('bg-music');
             if (music) {
-                music.muted = false; // Memastikan suara tidak ter-mute bawaan sistem
+                music.muted = false;
                 music.play()
-                .then(() => {
-                    console.log("Musik sukses berputar!");
-                })
-                .catch(e => {
-                    console.log("Pemutaran tertahan browser, sistem akan mencoba lagi di slide berikutnya:", e);
-                });
+                .then(() => { console.log("Musik Berhasil Berputar!"); })
+                .catch(e => { console.log("Autoplay ditahan browser:", e); });
             }
-            // Pindah langsung ke slide 2
             nextSlide('slide2');
         }
 
         function nextSlide(nextId) {
-            // Backup pemicu musik cadangan di setiap klik tombol selanjutnya
             const music = document.getElementById('bg-music');
             if (music) { music.play().catch(() => {}); }
 
@@ -343,17 +393,28 @@
             currentSlide.classList.remove('active');
             nextSlide.classList.add('active');
 
+            // Kontrol transisi warna background
             if(nextId === 'slide1') windowContent.style.backgroundColor = "#fffdf2";
             if(nextId === 'slide2' || nextId === 'slide3') windowContent.style.backgroundColor = "#ffe5ec";
             if(nextId === 'slide4') windowContent.style.backgroundColor = "#e3f2fd";
             if(nextId === 'slide5' || nextId === 'slide6') windowContent.style.backgroundColor = "#fffdf2";
             if(nextId === 'slide7') windowContent.style.backgroundColor = "#e8f5e9";
-            if(nextId === 'slide8') windowContent.style.backgroundColor = "#f3e5f5";
+            
+            if(nextId === 'slide8') {
+                windowContent.style.backgroundColor = "#12121c"; // Kamar Gelap
+                resetSlide8(); 
+            }
+            
+            if(nextId === 'slide9') windowContent.style.backgroundColor = "#f3e5f5";
 
             if (nextId !== 'slide1') backBtn.style.display = 'block';
 
-            if (nextId === 'slide8') {
-                jalankanKetikSlide8();
+            if (nextId === 'slide9') {
+                jalankanKetikSlide9();
+            } else if (nextId === 'slide8') {
+                typewriter('text8', textData.text8, () => {
+                    if(!candleBlown) startCountdown();
+                });
             } else {
                 const textElem = nextSlide.querySelector('.typewriter-text');
                 if (textElem) {
@@ -381,10 +442,15 @@
                 if(prevId === 'slide4') windowContent.style.backgroundColor = "#e3f2fd";
                 if(prevId === 'slide5' || prevId === 'slide6') windowContent.style.backgroundColor = "#fffdf2";
                 if(prevId === 'slide7') windowContent.style.backgroundColor = "#e8f5e9";
-                if(prevId === 'slide8') windowContent.style.backgroundColor = "#f3e5f5";
+                if(prevId === 'slide8') windowContent.style.backgroundColor = "#12121c";
+                if(prevId === 'slide9') windowContent.style.backgroundColor = "#f3e5f5";
 
-                if (prevId === 'slide8') {
-                    jalankanKetikSlide8();
+                if (prevId === 'slide9') {
+                    jalankanKetikSlide9();
+                } else if (prevId === 'slide8') {
+                    typewriter('text8', textData.text8, () => {
+                        if(!candleBlown) startCountdown();
+                    });
                 } else {
                     const textElem = prevSlideElem.querySelector('.typewriter-text');
                     if (textElem) {
@@ -394,14 +460,69 @@
             }
         }
 
-        function jalankanKetikSlide8() {
-            document.getElementById('text8_1').innerHTML = "";
-            document.getElementById('text8_2').innerHTML = "";
-            document.getElementById('text8_3').innerHTML = "";
+        function resetSlide8() {
+            candleBlown = false;
+            countdownActive = false;
+            document.getElementById('interactive-cake').src = 'kue-nyala.gif';
+            document.getElementById('interactive-cake').classList.remove('clickable-cake');
+            document.getElementById('interactive-cake').onclick = null;
+            document.getElementById('countdown-num').innerHTML = "";
+            document.getElementById('next-to-surat').style.display = 'none';
+            document.getElementById('text8').style.color = "#fffdf0";
+        }
+
+        function startCountdown() {
+            if(countdownActive) return;
+            countdownActive = true;
             
-            typewriter('text8_1', "From me...", () => {
-                typewriter('text8_2', "...to you, aliya", () => {
-                    typewriter('text8_3', textData.text8);
+            let count = 3;
+            const countElem = document.getElementById('countdown-num');
+            countElem.innerHTML = count + "...";
+
+            const timer = setInterval(() => {
+                count--;
+                if(count > 0) {
+                    countElem.innerHTML = count + "...";
+                } else {
+                    clearInterval(timer);
+                    countElem.innerHTML = "";
+                    aktifkanFiturTiup();
+                }
+            }, 1200);
+        }
+
+        function aktifkanFiturTiup() {
+            const cake = document.getElementById('interactive-cake');
+            cake.classList.add('clickable-cake');
+            typewriter('text8', "Now, TAP THE CANDLE to blow it ! 💨");
+            
+            cake.onclick = function() {
+                if(candleBlown) return;
+                candleBlown = true;
+                
+                // Ganti gambar ke versi mati
+                cake.src = 'kue-mati.jpg';
+                cake.classList.remove('clickable-cake');
+
+                // Nyalakan lampu ruangan (Kembali Terang)
+                document.querySelector('.window-content').style.backgroundColor = "#fffdf2";
+                document.getElementById('text8').style.color = "#4a4a4a";
+
+                // Munculkan tombol rahasia akhir
+                typewriter('text8', "Wish granted! ✨ Your last gift is ready.", () => {
+                    document.getElementById('next-to-surat').style.display = 'inline-block';
+                });
+            };
+        }
+
+        function jalankanKetikSlide9() {
+            document.getElementById('text9_1').innerHTML = "";
+            document.getElementById('text9_2').innerHTML = "";
+            document.getElementById('text9_3').innerHTML = "";
+            
+            typewriter('text9_1', "From me...", () => {
+                typewriter('text9_2', "...to you, aliya", () => {
+                    typewriter('text9_3', textData.text9);
                 });
             });
         }
