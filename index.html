@@ -199,8 +199,8 @@
 </head>
 <body>
 
-    <audio id="bg-music" loop>
-        <source src="musik.mp3" type="audio/mpeg">
+    <audio id="bg-music" loop preload="auto">
+        <source src="musik.mp3.mpeg" type="audio/mpeg">
     </audio>
 
     <div class="window">
@@ -223,7 +223,7 @@
                 </div>
 
                 <p class="typewriter-text" id="text1">There is a secret message for you...</p>
-                <button class="pixel-btn" onclick="nextSlide('slide2')">click me !</button>
+                <button class="pixel-btn" onclick="mulaiDanMainkanMusik()">click me !</button>
             </div>
 
             <div class="slide" id="slide2">
@@ -313,12 +313,27 @@
             text8: "Happy birthday, Aliya! May all your dreams come true. I hope you always laugh freely without any burdens every day, and be surrounded by everything you love. I'm so happy to have you in my life. Enjoy your day to the fullest! 🤍"
         };
 
-        function nextSlide(nextId) {
-            // Musik otomatis berputar saat tombol pertama diklik demi mematuhi aturan browser
+        // FUNGSI KHUSUS PEMICU MUSIK SAAT KLIK UTAMA (MENGALAHKAN SISTEM SECURITY BROWSER)
+        function mulaiDanMainkanMusik() {
             const music = document.getElementById('bg-music');
             if (music) {
-                music.play().catch(e => console.log("Musik tertahan sistem autoplay browser. Tekan tombol lagi."));
+                music.muted = false; // Memastikan suara tidak ter-mute bawaan sistem
+                music.play()
+                .then(() => {
+                    console.log("Musik sukses berputar!");
+                })
+                .catch(e => {
+                    console.log("Pemutaran tertahan browser, sistem akan mencoba lagi di slide berikutnya:", e);
+                });
             }
+            // Pindah langsung ke slide 2
+            nextSlide('slide2');
+        }
+
+        function nextSlide(nextId) {
+            // Backup pemicu musik cadangan di setiap klik tombol selanjutnya
+            const music = document.getElementById('bg-music');
+            if (music) { music.play().catch(() => {}); }
 
             const currentSlide = document.querySelector('.slide.active');
             const nextSlide = document.getElementById(nextId);
