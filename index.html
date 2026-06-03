@@ -200,16 +200,15 @@
 </head>
 <body>
 
-    <!-- KODE AUDIO BACKGROUND -->
-    <audio id="bg-music" loop>
-        <source src="musik.mp3" type="audio/mpeg">
+    <!-- LINK MUSIK DI-UPDATE MENGGUNAKAN AUDIO MP3 STABIL -->
+    <audio id="bg-music" loop prefetch>
+        <source src="https://assets.codepen.io/21542/how-will-i-know-instrumental.mp3" type="audio/mpeg">
     </audio>
 
     <div class="window">
         <div class="window-header">
             <span class="header-btn btn-back" onclick="prevSlide()">←</span>
-            <!-- Nama judul window berganti menjadi ALIYA-BIRTHDAY -->
-            <span class="window-title">ALIYA-BIRTHDAY 💖</span>
+            <span class="window-title">ALIYA-BIRTHDAY</span>
             <span class="header-btn btn-minus">▬</span>
             <span class="header-btn btn-close">✖</span>
         </div>
@@ -325,9 +324,10 @@
         };
 
         function nextSlide(nextId) {
+            // Musik otomatis berputar begitu user berinteraksi menekan tombol pertama
             const music = document.getElementById('bg-music');
             if (music) {
-                music.play().catch(e => console.log("Musik aktif setelah interaksi."));
+                music.play().catch(e => console.log("Musik dijeda oleh kebijakan browser sampai tombol ditekan."));
             }
 
             const currentSlide = document.querySelector('.slide.active');
