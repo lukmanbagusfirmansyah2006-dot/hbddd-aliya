@@ -98,7 +98,7 @@
         .window-content {
             padding: 20px;
             text-align: center;
-            min-height: 440px; /* Dipertinggi agar muat gambar ukuran besar */
+            min-height: 460px;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -115,9 +115,9 @@
             z-index: 5;
         }
 
-        /* UKURAN GAMBAR UTAMA DIERBESAR */
+        /* UKURAN GAMBAR UTAMA */
         .pixel-gbr {
-            max-width: 165px; /* Diperbesar dari sebelumnya 120px */
+            max-width: 165px;
             height: auto;
             margin: 15px 0;
             position: relative;
@@ -125,12 +125,12 @@
             animation: floatAnim 3s ease-in-out infinite;
         }
 
-        /* KHUSUS KADO & KUE UNTUK HILANGKAN BACKGROUND PUTIH */
+        /* HILANGKAN BACKGROUND PUTIH PADA GIF TERTENTU */
         .blend-img {
             mix-blend-mode: multiply;
         }
 
-        /* DEKORASI AWAN PIXEL (Untuk Slide 1, 2, 3, 5, 6) */
+        /* DEKORASI AWAN PIXEL */
         .pixel-cloud {
             position: absolute;
             background: white;
@@ -208,23 +208,29 @@
     <div class="window">
         <div class="window-header">
             <span class="header-btn btn-back" onclick="prevSlide()">←</span>
-            <span class="window-title">Aliya_Bday.exe 💖</span>
+            <!-- Nama judul window berganti menjadi ALIYA-BIRTHDAY -->
+            <span class="window-title">ALIYA-BIRTHDAY 💖</span>
             <span class="header-btn btn-minus">▬</span>
             <span class="header-btn btn-close">✖</span>
         </div>
 
         <div class="window-content">
 
-            <!-- SLIDE 1 (Bebek + Awan) -->
+            <!-- SLIDE 1 -->
             <div class="slide active" id="slide1">
                 <div class="pixel-cloud" style="top: 10px; left: 15px; transform: scale(0.8);"></div>
                 <div class="pixel-cloud" style="top: 40px; right: 20px; transform: scale(1.1); animation-delay: -2s;"></div>
-                <img src="bebek.gif" alt="Bebek" class="pixel-gbr">
+                
+                <div style="display: flex; justify-content: center; gap: 15px; align-items: flex-end; margin: 15px 0;">
+                    <img src="bebek.gif" alt="Bebek" class="pixel-gbr" style="max-width: 110px; margin: 0;">
+                    <img src="bebek-2.gif" alt="Bebek 2" class="pixel-gbr" style="max-width: 110px; margin: 0; animation-delay: -1.5s;">
+                </div>
+
                 <p class="typewriter-text" id="text1">There is a secret message for you...</p>
                 <button class="pixel-btn" onclick="nextSlide('slide2')">click me !</button>
             </div>
 
-            <!-- SLIDE 2 (Shiba Inu + Awan) -->
+            <!-- SLIDE 2 -->
             <div class="slide" id="slide2">
                 <div class="pixel-cloud" style="top: 15px; left: 30px; transform: scale(1); animation-delay: -1s;"></div>
                 <div class="pixel-cloud" style="top: 50px; right: 10px; transform: scale(0.8); animation-delay: -3s;"></div>
@@ -233,7 +239,7 @@
                 <button class="pixel-btn" onclick="nextSlide('slide3')">open gift ?</button>
             </div>
 
-            <!-- SLIDE 3 (Buka Kado 1 + Awan) -->
+            <!-- SLIDE 3 -->
             <div class="slide" id="slide3">
                 <div class="pixel-cloud" style="top: 5px; right: 40px; transform: scale(0.9);"></div>
                 <div class="pixel-cloud" style="top: 55px; left: 15px; transform: scale(1.2); animation-delay: -2.5s;"></div>
@@ -242,21 +248,21 @@
                 <button class="pixel-btn" onclick="nextSlide('slide4')">check it out !</button>
             </div>
 
-            <!-- SLIDE 4 - PUNCAK 1 (Cinnamoroll + Kue + Balon) -->
+            <!-- SLIDE 4 - Banner Happy Birthday Teratas -->
             <div class="slide" id="slide4" style="position: relative;">
-                <!-- Balon Samping Diperbesar & Disesuaikan Posisinya -->
-                <img src="balon-kiri.gif" alt="Balon Kiri" style="position: absolute; left: -15px; bottom: 120px; max-width: 65px; z-index: 1; animation: floatAnim 4s ease-in-out infinite;">
-                <img src="balon-kanan.gif" alt="Balon Kanan" style="position: absolute; right: -15px; bottom: 120px; max-width: 65px; z-index: 1; animation: floatAnim 3.5s ease-in-out infinite;">
+                <img src="happy-birthday.gif" alt="Happy Birthday" class="blend-img" style="max-width: 160px; display: block; margin: 0 auto 5px auto; position: relative; z-index: 3;">
                 
-                <!-- Gambar Karakter & Kue Diperbesar -->
-                <img src="cinnamoroll.gif" alt="Cinnamoroll" class="pixel-gbr" style="max-width: 140px; margin-bottom: 2px; position: relative; z-index: 2;">
-                <img src="kue.gif" alt="Kue" class="pixel-gbr blend-img" style="max-width: 105px; display: block; margin: 0 auto 15px auto; position: relative; z-index: 2;">
+                <img src="balon-kiri.gif" alt="Balon Kiri" style="position: absolute; left: -15px; bottom: 100px; max-width: 60px; z-index: 1; animation: floatAnim 4s ease-in-out infinite;">
+                <img src="balon-kanan.gif" alt="Balon Kanan" style="position: absolute; right: -15px; bottom: 100px; max-width: 60px; z-index: 1; animation: floatAnim 3.5s ease-in-out infinite;">
+                
+                <img src="cinnamoroll.gif" alt="Cinnamoroll" class="pixel-gbr" style="max-width: 115px; margin: 5px 0; position: relative; z-index: 2;">
+                <img src="kue.gif" alt="Kue" class="pixel-gbr blend-img" style="max-width: 90px; display: block; margin: 0 auto 10px auto; position: relative; z-index: 2;">
                 
                 <p class="typewriter-text" id="text4" style="position: relative; z-index: 2; font-size: 8px;">happy 19th birthday, aliya ! 🎂🎈</p>
                 <button class="pixel-btn" onclick="nextSlide('slide5')">next...</button>
             </div>
 
-            <!-- SLIDE 5 (Snoopy + Awan) -->
+            <!-- SLIDE 5 -->
             <div class="slide" id="slide5">
                 <div class="pixel-cloud" style="top: 20px; left: 10px; transform: scale(1.1); animation-delay: -0.5s;"></div>
                 <div class="pixel-cloud" style="top: 45px; right: 25px; transform: scale(0.8); animation-delay: -2.2s;"></div>
@@ -265,7 +271,7 @@
                 <button class="pixel-btn" onclick="nextSlide('slide6')">open message...</button>
             </div>
 
-            <!-- SLIDE 6 (Buka Kado 2 + Awan) -->
+            <!-- SLIDE 6 -->
             <div class="slide" id="slide6">
                 <div class="pixel-cloud" style="top: 10px; right: 15px; transform: scale(1);"></div>
                 <div class="pixel-cloud" style="top: 60px; left: 30px; transform: scale(0.9); animation-delay: -3.5s;"></div>
@@ -274,29 +280,33 @@
                 <button class="pixel-btn" onclick="nextSlide('slide7')">Find out..!</button>
             </div>
 
-            <!-- SLIDE 7 - PUNCAK 2 (Kuromi) -->
-            <div class="slide" id="slide7">
-                <img src="kuromi.gif" alt="Kuromi" class="pixel-gbr" style="max-width: 150px;">
-                <p class="typewriter-text" id="text7">For the second time, happy 19th birthday 🔥</p>
+            <!-- SLIDE 7 - Kuromi Pesta Kertas -->
+            <div class="slide" id="slide7" style="position: relative;">
+                <img src="paper.gif" alt="Paper Atas" class="blend-img" style="max-width: 110px; display: block; margin: 0 auto -10px auto; position: relative; z-index: 2;">
+                
+                <div style="display: flex; justify-content: center; align-items: center; gap: 5px; width: 100%; position: relative; z-index: 3;">
+                    <img src="paper-gif kiri.gif" alt="Paper Kiri" class="blend-img" style="max-width: 55px; animation: floatAnim 3.5s ease-in-out infinite;">
+                    <img src="kuromi.gif" alt="Kuromi" class="pixel-gbr" style="max-width: 120px; margin: 0;">
+                    <img src="paper-gif kanan.gif" alt="Paper Kanan" class="blend-img" style="max-width: 55px; animation: floatAnim 3.5s ease-in-out infinite; animation-delay: -1.7s;">
+                </div>
+
+                <p class="typewriter-text" id="text7" style="margin-top: 15px;">For the second time, happy 19th birthday 🔥</p>
                 <button class="pixel-btn" onclick="nextSlide('slide8')">next...</button>
             </div>
 
-            <!-- SLIDE 8 - PESAN AKHIR (Karakter Diperbesar & Teks Rapih) -->
+            <!-- SLIDE 8 - Pesan Akhir Berurutan -->
             <div class="slide" id="slide8">
                 <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 15px; width: 100%;">
                     <div style="text-align: center;">
-                        <p style="font-size: 6px; margin-bottom: 5px; opacity: 0.7;">From me...</p>
+                        <p id="text8_1" style="font-size: 6px; margin-bottom: 5px; opacity: 0.7; min-height: 10px;"></p>
                         <img src="katak.gif" alt="Katak" class="pixel-gbr" style="max-width: 85px; margin: 0;">
                     </div>
                     <div style="text-align: center;">
-                        <p style="font-size: 6px; margin-bottom: 5px; opacity: 0.7;">...to you, aliya</p>
+                        <p id="text8_2" style="font-size: 6px; margin-bottom: 5px; opacity: 0.7; min-height: 10px;"></p>
                         <img src="kelinci.gif" alt="Kelinci" class="pixel-gbr" style="max-width: 85px; margin: 0;">
                     </div>
                 </div>
-                <!-- Pesan Kustom Bahasa Inggris Terbaca Semua -->
-                <p class="typewriter-text" id="text8" style="font-size: 7px; line-height: 1.7; text-align: left; padding: 0 5px; text-transform: none; margin-bottom: 0;">
-                    Happy birthday, Aliya! May all your dreams come true. I hope you always laugh freely without any burdens every day, and be surrounded by everything you love. I'm so happy to have you in my life. Enjoy your day to the fullest! 🤍
-                </p>
+                <p class="typewriter-text" id="text8_3" style="font-size: 7px; line-height: 1.7; text-align: left; padding: 0 5px; text-transform: none; margin-bottom: 0; min-height: 80px;"></p>
             </div>
 
         </div>
@@ -337,8 +347,14 @@
 
             if (nextId !== 'slide1') backBtn.style.display = 'block';
 
-            const textId = nextSlide.querySelector('.typewriter-text').id;
-            typewriter(textId, textData[textId]);
+            if (nextId === 'slide8') {
+                jalankanKetikSlide8();
+            } else {
+                const textElem = nextSlide.querySelector('.typewriter-text');
+                if (textElem) {
+                    typewriter(textElem.id, textData[textElem.id]);
+                }
+            }
         }
 
         function prevSlide() {
@@ -362,13 +378,31 @@
                 if(prevId === 'slide7') windowContent.style.backgroundColor = "#e8f5e9";
                 if(prevId === 'slide8') windowContent.style.backgroundColor = "#f3e5f5";
 
-                const textId = prevSlideElem.querySelector('.typewriter-text').id;
-                typewriter(textId, textData[textId]);
+                if (prevId === 'slide8') {
+                    jalankanKetikSlide8();
+                } else {
+                    const textElem = prevSlideElem.querySelector('.typewriter-text');
+                    if (textElem) {
+                        typewriter(textElem.id, textData[textElem.id]);
+                    }
+                }
             }
         }
 
+        function jalankanKetikSlide8() {
+            document.getElementById('text8_1').innerHTML = "";
+            document.getElementById('text8_2').innerHTML = "";
+            document.getElementById('text8_3').innerHTML = "";
+            
+            typewriter('text8_1', "From me...", () => {
+                typewriter('text8_2', "...to you, aliya", () => {
+                    typewriter('text8_3', textData.text8);
+                });
+            });
+        }
+
         let typewriterIntervals = {};
-        function typewriter(id, text) {
+        function typewriter(id, text, callback) {
             const element = document.getElementById(id);
             if (!element) return;
 
@@ -386,6 +420,7 @@
                 } else {
                     clearInterval(interval);
                     delete typewriterIntervals[id];
+                    if (callback) callback(); 
                 }
             }, speed);
 
