@@ -154,7 +154,7 @@
         /* DEKORASI BINTANG BESAR KHUSUS SLIDE MAKE A WISH */
         .bg-bintang {
             position: absolute;
-            width: 45px; /* Ukuran besar sesuai permintaan */
+            width: 45px;
             height: auto;
             z-index: 2;
             opacity: 0;
@@ -229,14 +229,14 @@
         #slide4 { background-color: #e3f2fd; }
         #slide5, #slide6 { background-color: #fffdf2; }
         #slide7 { background-color: #e8f5e9; }
-        #slide8 { background-color: #12121c; } /* Gelap syahdu di awal */
+        #slide8 { background-color: #12121c; }
         #slide9 { background-color: #f3e5f5; }
     </style>
 </head>
 <body>
 
     <audio id="bg-music" loop preload="auto">
-        <source src="musik.mpeg" type="audio/mpeg">
+        <source src="musik.mp3.mpeg" type="audio/mpeg">
     </audio>
 
     <div class="window">
@@ -353,7 +353,7 @@
     </div>
 
     <script>
-        // DATA TEKS UTAMA (SUDAH TERUPDATE)
+        // DATA TEKS UTAMA
         const textData = {
             text1: "There is a secret message for you...",
             text2: "You have a GIFT !",
@@ -363,7 +363,6 @@
             text6: "hmm... it seems like you have a gift again opening gift...",
             text7: "For the second time, happy 19th birthday 🔥",
             text8: "Wait... Before you unlock the final secret message. Close your eyes, and make a wish... 🤍",
-            // Teks Surat Terbaru dengan pemisah paragraf otomatis (\n\n)
             text9: "Happy birthday, Aliya! May all your dreams come true. I hope you laugh freely and carefree every day, and are surrounded by all the things you love.\n\nMake sure to prioritize your health and happiness. Good luck with your exams, everyone! After this, I'll be back to Sukodono, haha!\n\nI'm so happy to have met you all. Enjoy your special day to the fullest! 🤍"
         };
 
@@ -393,7 +392,6 @@
             currentSlide.classList.remove('active');
             nextSlide.classList.add('active');
 
-            // Kontrol transisi warna background
             if(nextId === 'slide1') windowContent.style.backgroundColor = "#fffdf2";
             if(nextId === 'slide2' || nextId === 'slide3') windowContent.style.backgroundColor = "#ffe5ec";
             if(nextId === 'slide4') windowContent.style.backgroundColor = "#e3f2fd";
@@ -401,7 +399,7 @@
             if(nextId === 'slide7') windowContent.style.backgroundColor = "#e8f5e9";
             
             if(nextId === 'slide8') {
-                windowContent.style.backgroundColor = "#12121c"; // Kamar Gelap
+                windowContent.style.backgroundColor = "#12121c";
                 resetSlide8(); 
             }
             
@@ -500,15 +498,12 @@
                 if(candleBlown) return;
                 candleBlown = true;
                 
-                // Ganti gambar ke versi mati
                 cake.src = 'kue-mati.jpg';
                 cake.classList.remove('clickable-cake');
 
-                // Nyalakan lampu ruangan (Kembali Terang)
                 document.querySelector('.window-content').style.backgroundColor = "#fffdf2";
                 document.getElementById('text8').style.color = "#4a4a4a";
 
-                // Munculkan tombol rahasia akhir
                 typewriter('text8', "Wish granted! ✨ Your last gift is ready.", () => {
                     document.getElementById('next-to-surat').style.display = 'inline-block';
                 });
