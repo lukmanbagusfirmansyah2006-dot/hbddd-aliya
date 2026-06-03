@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surprise For Aliya! ✨</title>
-    <!-- Mengambil Font Pixel Art -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -200,9 +199,8 @@
 </head>
 <body>
 
-    <!-- LINK MUSIK DI-UPDATE MENGGUNAKAN AUDIO MP3 STABIL -->
-    <audio id="bg-music" loop prefetch>
-        <source src="https://assets.codepen.io/21542/how-will-i-know-instrumental.mp3" type="audio/mpeg">
+    <audio id="bg-music" loop>
+        <source src="musik.mp3" type="audio/mpeg">
     </audio>
 
     <div class="window">
@@ -215,7 +213,6 @@
 
         <div class="window-content">
 
-            <!-- SLIDE 1 -->
             <div class="slide active" id="slide1">
                 <div class="pixel-cloud" style="top: 10px; left: 15px; transform: scale(0.8);"></div>
                 <div class="pixel-cloud" style="top: 40px; right: 20px; transform: scale(1.1); animation-delay: -2s;"></div>
@@ -229,7 +226,6 @@
                 <button class="pixel-btn" onclick="nextSlide('slide2')">click me !</button>
             </div>
 
-            <!-- SLIDE 2 -->
             <div class="slide" id="slide2">
                 <div class="pixel-cloud" style="top: 15px; left: 30px; transform: scale(1); animation-delay: -1s;"></div>
                 <div class="pixel-cloud" style="top: 50px; right: 10px; transform: scale(0.8); animation-delay: -3s;"></div>
@@ -238,7 +234,6 @@
                 <button class="pixel-btn" onclick="nextSlide('slide3')">open gift ?</button>
             </div>
 
-            <!-- SLIDE 3 -->
             <div class="slide" id="slide3">
                 <div class="pixel-cloud" style="top: 5px; right: 40px; transform: scale(0.9);"></div>
                 <div class="pixel-cloud" style="top: 55px; left: 15px; transform: scale(1.2); animation-delay: -2.5s;"></div>
@@ -247,7 +242,6 @@
                 <button class="pixel-btn" onclick="nextSlide('slide4')">check it out !</button>
             </div>
 
-            <!-- SLIDE 4 - Banner Happy Birthday Teratas -->
             <div class="slide" id="slide4" style="position: relative;">
                 <img src="happy-birthday.gif" alt="Happy Birthday" class="blend-img" style="max-width: 160px; display: block; margin: 0 auto 5px auto; position: relative; z-index: 3;">
                 
@@ -261,7 +255,6 @@
                 <button class="pixel-btn" onclick="nextSlide('slide5')">next...</button>
             </div>
 
-            <!-- SLIDE 5 -->
             <div class="slide" id="slide5">
                 <div class="pixel-cloud" style="top: 20px; left: 10px; transform: scale(1.1); animation-delay: -0.5s;"></div>
                 <div class="pixel-cloud" style="top: 45px; right: 25px; transform: scale(0.8); animation-delay: -2.2s;"></div>
@@ -270,7 +263,6 @@
                 <button class="pixel-btn" onclick="nextSlide('slide6')">open message...</button>
             </div>
 
-            <!-- SLIDE 6 -->
             <div class="slide" id="slide6">
                 <div class="pixel-cloud" style="top: 10px; right: 15px; transform: scale(1);"></div>
                 <div class="pixel-cloud" style="top: 60px; left: 30px; transform: scale(0.9); animation-delay: -3.5s;"></div>
@@ -279,7 +271,6 @@
                 <button class="pixel-btn" onclick="nextSlide('slide7')">Find out..!</button>
             </div>
 
-            <!-- SLIDE 7 - Kuromi Pesta Kertas -->
             <div class="slide" id="slide7" style="position: relative;">
                 <img src="paper.gif" alt="Paper Atas" class="blend-img" style="max-width: 110px; display: block; margin: 0 auto -10px auto; position: relative; z-index: 2;">
                 
@@ -293,7 +284,6 @@
                 <button class="pixel-btn" onclick="nextSlide('slide8')">next...</button>
             </div>
 
-            <!-- SLIDE 8 - Pesan Akhir Berurutan -->
             <div class="slide" id="slide8">
                 <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 15px; width: 100%;">
                     <div style="text-align: center;">
@@ -324,10 +314,10 @@
         };
 
         function nextSlide(nextId) {
-            // Musik otomatis berputar begitu user berinteraksi menekan tombol pertama
+            // Musik otomatis berputar saat tombol pertama diklik demi mematuhi aturan browser
             const music = document.getElementById('bg-music');
             if (music) {
-                music.play().catch(e => console.log("Musik dijeda oleh kebijakan browser sampai tombol ditekan."));
+                music.play().catch(e => console.log("Musik tertahan sistem autoplay browser. Tekan tombol lagi."));
             }
 
             const currentSlide = document.querySelector('.slide.active');
